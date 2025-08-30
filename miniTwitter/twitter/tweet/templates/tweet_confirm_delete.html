@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Delete Tweet
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card shadow p-4" style="max-width: 600px; width: 100%;">
+    <div class="card-body text-center">
+      <h2 class="card-title text-danger mb-4">Are you sure?</h2>
+      <p class="card-text mb-4">
+        Do you really want to delete this tweet? <br>
+        <strong>"{{ tweet.text|truncatewords:15 }}"</strong>
+      </p>
+
+      <form method="POST" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger px-4">Yes, Delete</button>
+      </form>
+
+      <a href="{% url 'tweet_list' %}" class="btn btn-secondary px-4 ms-2">Cancel</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
